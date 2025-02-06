@@ -1,4 +1,4 @@
-# Proyecto To-Do-List
+# Proyecto WeatherApi
 Aplicación que obtenga datos sobre el clima de alguna API pública (como Visual Crossing Weather) y muestre la información.
 ## Objetivo:
 
