@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class WeatherService {
 
-  private apiUrl = 'http://localhost:5184/api/Weather/Get2?city=';  // URL de la API
+  private apiUrl = 'http://localhost:5184/api/Weather/Get?city=';  // URL de la API
 
   constructor(private http: HttpClient) {}
 
