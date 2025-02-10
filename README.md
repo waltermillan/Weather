@@ -2,7 +2,14 @@
 Aplicación que obtenga datos sobre el clima de alguna API pública (como Visual Crossing Weather) y muestre la información.
 ## Objetivo:
 
-Practica .NET (C#) / SQL Server y Angular (Typescript) / Patrones de diseño / Arquitectura Onion.
+## Tecnologías utilizadas:
+- **C#**
+- **NET CORE**
+- **Angular**
+- **TypeScript**
+- **MS SQL Server**
+- **Design Patterns: Repository, UnitOfWork, Singleton y Factory.**
+- **ONION Arquitecture**
 
 Utilizar una API Visual Crossing Weather, para obtener información del clima en tiempo real.
 
