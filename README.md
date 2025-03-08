@@ -1,36 +1,36 @@
-# Proyecto WeatherApi
-Aplicación que obtenga datos sobre el clima de alguna API pública (como Visual Crossing Weather) y muestre la información.
-## Objetivo:
+# WeatherApi Project
+Application that obtains weather data from some public API (such as Visual Crossing Weather) and displays the information.
+## Objective:
 
-## Tecnologías utilizadas:
+## Technologies used:
 - **C#**
 - **NET CORE**
 - **Angular**
 - **TypeScript**
-- **MS SQL Server**
-- **Design Patterns: Repository, UnitOfWork, Singleton y Factory.**
-- **ONION Arquitecture**
+- **MS SQL Server** **Design Patterns: Repository, UnitOfWork, Singleton and Factory
+- Design Patterns: Repository, UnitOfWork, Singleton and Factory.
+- ONION Architecture** **ONION Architecture** **ONION Architecture** **ONION Architecture** **ONION Architecture** **ONION Architecture**
 
-Utilizar una API Visual Crossing Weather, para obtener información del clima en tiempo real.
+Use a Visual Crossing Weather API, to obtain real-time weather information.
 
-## Características
+## Features
 
 BACKEND:
-- Arquitectura Onion.
-- Principios SOLID.
-- Diseño de patrones: Repository, UnitOfWork, Singleton y Factory.
+- Onion Architecture.
+- SOLID principles.
+- Pattern design: Repository, UnitOfWork, Singleton and Factory.
 
 FRONTEND:
-- Desarrollado con Angular 18.0.2
-- Orientado a módulos.
-- Creación de servicios y modelos.
+- Developed with Angular 18.0.2.
+- Module oriented.
+- Creation of services and models.
 
-BBDD (SQL Server)
-- Diagrama de ER Escrito con MS SQL Server
-- Tablas (DDLs) y Datos (DMLs).
+DB (SQL Server)
+- ER Diagram Written with MS SQL Server
+- Tables (DDLs) and Data (DMLs).
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
 
 git clone [https://github.com/waltermillan/WeatherApi.git](https://github.com/waltermillan/WeatherApi.git)
