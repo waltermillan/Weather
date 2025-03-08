@@ -7,9 +7,8 @@ Application that obtains weather data from some public API (such as Visual Cross
 - **NET CORE**
 - **Angular**
 - **TypeScript**
-- **MS SQL Server** **Design Patterns: Repository, UnitOfWork, Singleton and Factory
-- Design Patterns: Repository, UnitOfWork, Singleton and Factory.
-- ONION Architecture**
+- **MS SQL Server**
+- **Docker**
 
 Use a Visual Crossing Weather API, to obtain real-time weather information.
 
