@@ -1,35 +1,104 @@
-# WeatherApi Project
-Application that obtains weather data from some public API (such as Visual Crossing Weather) and displays the information.
-## Objective:
+# 🌦️ Weather App Project
 
-## Technologies used:
-- **C#**
-- **NET CORE**
-- **Angular**
-- **TypeScript**
-- **MS SQL Server**
-- **Docker**
+A visualization app for regions, provinces, and cities of Spain.  
+This application retrieves real-time weather data from public APIs (such as Visual Crossing Weather) and displays it interactively.
 
-Use a Visual Crossing Weather API, to obtain real-time weather information.
+---
 
-## Features
+## 📅 Changelog
 
-BACKEND:
-- Onion Architecture.
-- SOLID principles.
-- Pattern design: Repository, UnitOfWork, Singleton and Factory.
+- **2025-02-05**: Initial upload — backend and frontend (no database).
+- **2025-02-08**: Minor updates and fixes.
+- **2025-04-18**: Added modules for weather and forecast queries, modals, models and services. Integrated Visual Crossing Weather API and added the architecture diagram.
 
-FRONTEND:
-- Developed with Angular 18.0.2.
-- Module oriented.
-- Creation of services and models.
+---
 
-DB (SQL Server)
-- ER Diagram Written with MS SQL Server
-- Tables (DDLs) and Data (DMLs).
+## 🎯 Objective
 
-## Installation
+To practice with:
+- **.NET (C#)** and **SQL (Oracle DB)**
+- **Angular (TypeScript)**
+- **Design Patterns**
+- **Onion Architecture**
+
+Uses the **Visual Crossing Weather API** to retrieve real-time weather and forecast data.
+
+---
+
+## 🚀 Features
+
+### 🔧 Backend
+- Follows **Onion Architecture**
+- Implements several **Design Patterns**:
+  - Repository Pattern
+  - Unit of Work
+  - Singleton
+  - Base Entity
+  - Data Transfer Object (DTO)
+
+- **Key Libraries**:
+  - API calls to: [Visual Crossing Weather](https://weather.visualcrossing.com/)
+  - Encryption:
+    - `BCrypt.Net-Next`
+    - `System.Security.Cryptography` (AES-256 encryption)
+  - Logging:
+    - `Serilog`
+    - `Serilog.Extensions.Logging`
+    - `Serilog.Sinks.File`
+  - ORM:
+    - `Oracle.EntityFrameworkCore` for Oracle DB integration using Docker
+
+---
+
+### 💻 Frontend
+
+- Built with **Angular 18.2.14**
+- Implements data communication via **parent-child components**
+- Uses Angular Material for modal/popup support:
+  - `@angular/material: 18.2.14`
+  - `@angular/animations: 18.2.13`
+  - `@angular/cdk: 18.2.14`
+- Modular project structure
+
+---
+
+### 🗄️ Database
+
+- Written in **Oracle DB (via SQL Developer)**
+- Uses **Dockerized Oracle DB instance**
+- Includes:
+  - **DDL scripts** for table creation
+  - **DML scripts** for sample data insertion
+
+---
+
+## 🧪 Installation
+
+### ✅ Prerequisites
+
+Ensure the following are installed on your system:
+
+- [.NET SDK 9.0.200](https://dotnet.microsoft.com/)
+- [Docker Desktop 4.40.0](https://www.docker.com/)
+- [SQL Developer](https://www.oracle.com/tools/downloads/sqldev-downloads.html)
+- [Node.js + npm](https://nodejs.org/) (for frontend)
+
+---
+
+### 🔧 Setup Steps
 
 1. Clone the repository:
+    ```bash
+    git clone https://github.com/waltermillan/Weather.git
+    ```
 
-git clone [https://github.com/waltermillan/WeatherApi.git](https://github.com/waltermillan/WeatherApi.git)
+2. Follow the video guides for full setup:
+    - [Initial Setup Guide]() *(insert link when available)*
+
+3. Complete the remaining setup steps as described in the project documentation.
+
+---
+
+## 📄 License
+
+**Free and open-source**
