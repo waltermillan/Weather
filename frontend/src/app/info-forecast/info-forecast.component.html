@@ -1,0 +1,50 @@
+<main class="main">
+  <div class="content">
+    <!-- Left side: City selection -->
+    <div class="container">
+      <label for="citySelect">Select a city</label>
+      <!-- City selection combo -->
+      <select [(ngModel)]="selectedCity" (change)="getForecastInfo()">
+        <option
+          *ngFor="let city of cities"
+          [value]="city.name"
+          id="{{ city.id }}"
+        >
+          {{ city.name }}
+        </option>
+      </select>
+      <div style="margin-top: 10px">
+        <label for="citySelect"
+          ><b>Range of days:</b> {{ startDate }} - {{ endDate }} (
+          {{ note }} )</label
+        >
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider" role="separator" aria-label="Divider"></div>
+
+    <!-- Navigation buttons -->
+    <div *ngIf="weathers.length > 0">
+      <div class="nav-buttons">
+        <button (click)="prevDay()" [disabled]="currentIndex === 0">
+          ← Previous
+        </button>
+        <span>Día {{ currentIndex + 1 }} de {{ weathers.length }}</span>
+        <button
+          (click)="nextDay()"
+          [disabled]="currentIndex === weathers.length - 1"
+        >
+          Next →
+        </button>
+      </div>
+
+      <!-- Show only the current day -->
+      <div *ngIf="currentWeather">
+        <app-show-data-weather
+          [weather]="currentWeather"
+        ></app-show-data-weather>
+      </div>
+    </div>
+  </div>
+</main>

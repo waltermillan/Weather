@@ -1,0 +1,42 @@
+<!-- Right side: Weather info -->
+<div *ngIf="weather" class="weather-info">
+  <!-- Column 1: Basic Info -->
+  <div>
+    <h1>City:</h1>
+    <p>{{ weather.location }}</p>
+    <h1>Temperature:</h1>
+    <p>{{ weather.temperature }} °C</p>
+    <h1>Max. Temperature:</h1>
+    <p>{{ weather.tempmax }} °C</p>
+    <h1>Min. Temperature:</h1>
+    <p>{{ weather.tempmin }} °C</p>
+  </div>
+
+  <!-- Column 2: Weather Details -->
+  <div>
+    <h1>Humedity:</h1>
+    <p>{{ weather.humidity }}%</p>
+    <h1>Sunrise:</h1>
+    <p>{{ weather.sunrise | date : "shortTime" }}</p>
+    <h1>Sunset:</h1>
+    <p>{{ weather.sunset | date : "shortTime" }}</p>
+    <h1>Pressure:</h1>
+    <p>{{ weather.pressure }} hPa</p>
+  </div>
+
+  <!-- Column 3: Extra Details + Icon -->
+  <div>
+    <h1>Prob. Precipitation:</h1>
+    <p>{{ weather.precipprob }}%</p>
+    <h1>Description: {{ weather.datetime }}</h1>
+    <p>{{ weather.description }}</p>
+
+    <!-- Icono del clima -->
+    <div *ngIf="weather.icon" class="weather-icon">
+      <img
+        [src]="'assets/images/weather/' + weather.icon + '.png'"
+        alt="Icono del clima"
+      />
+    </div>
+  </div>
+</div>

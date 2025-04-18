@@ -1,42 +1,65 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Agregar FormsModule
-import { RouterModule, Routes } from '@angular/router'; // Importa RouterModule y Routes
-import { provideHttpClient, withInterceptorsFromDi, withFetch   } from '@angular/common/http';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+  withFetch,
+} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { InfoWeatherComponent } from './info-weather/info-weather.component';
-import { ForecastComponent } from './forecast/forecast.component';
+import { InfoForecastComponent } from './info-forecast/info-forecast.component';
 import { HomeComponent } from './home/home.component';
-
-
-
-
-// Define las rutas
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },  // Ruta para la página de inicio
-  { path: 'home', component: HomeComponent },  // Ruta para la To-Do List
-  { path: 'info-weather', component: InfoWeatherComponent },  // Redirige a la página de tareas
-  { path: 'forecast', component: ForecastComponent },  // Redirige a la página de tareas archivadas
-];
+import { LoginComponent } from './login/login.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { SuccessDialogComponent } from './modals/success-dialog/success-dialog.component';
+import { FailureDialogComponent } from './modals/failure-dialog/failure-dialog.component';
+import { WarningDialogComponent } from './modals/warning-dialog/warning-dialog.component';
+import { InfoHistoricalComponent } from './info-historical/info-historical.component';
+import { ShowDataWeatherComponent } from './show-data-weather/show-data-weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InfoWeatherComponent,
-    ForecastComponent,
-    HomeComponent
+    InfoForecastComponent,
+    HomeComponent,
+    LoginComponent,
+    SuccessDialogComponent,
+    FailureDialogComponent,
+    WarningDialogComponent,
+    InfoHistoricalComponent,
+    ShowDataWeatherComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
-    FormsModule
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi(), withFetch())
+    provideHttpClient(withInterceptorsFromDi(), withFetch()),
+    provideAnimationsAsync(),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

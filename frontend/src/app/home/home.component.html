@@ -1,2 +1,23 @@
-<p>home works!</p>
-Bienvenido
+<div class="container mt-5 text-center">
+  <div class="card shadow-sm p-4">
+    <h1 class="text-primary mb-3">{{ welcomeMessage }}!</h1>
+
+    <p class="lead">{{ appFullName }} 🌤️</p>
+
+    <p class="lead">We use the visualcrossing API</p>
+    <a class="lead" href="{{ externalApiResource }}" target="_blank">{{
+      externalApiResource
+    }}</a>
+
+    <hr />
+
+    <div class="mt-4">
+      <p><strong>User Logged:</strong> {{ userName }}</p>
+      <p><strong>Version:</strong> {{ versionApp }}</p>
+      <p><strong>Application Name:</strong> {{ appName }}</p>
+      <p>
+        <strong> {{ legalNameApp }}</strong>
+      </p>
+    </div>
+  </div>
+</div>

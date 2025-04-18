@@ -1,27 +1,64 @@
-using API.Extensions; // Asegúrate de que el espacio de nombres sea correcto
+using API.Extensions;
+using API.Services;
+using Core.Interfaces;
+using Infrastructure.Configuration;
+using Infrastructure.Data;
+using Infrastructure.Helpers;
+using Infrastructure.Repositories;
 using Infrastructure.Services;
+using Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Serilog.Filters;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var appName = builder.Configuration["SystemName:AppName"] ?? "WeatherApp";
+
+// Clean up other logging providers
+builder.Logging.ClearProviders();
+
+// Configurar filtros de logging para ASP.NET Core y Entity Framework Core
+builder.Logging.AddFilter("Microsoft", LogLevel.Warning); // Filters for the entire Microsoft part
+builder.Logging.AddFilter("System", LogLevel.Warning); // Filters for System logs
+
+// Configuring Serilog to write to file only
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File($"logs/{appName}-.log", rollingInterval: RollingInterval.Day) // Log in daily archive
+    .Filter.ByExcluding(Matching.FromSource("Microsoft.EntityFrameworkCore")) // Exclude logs from Entity Framework Core
+    .Filter.ByExcluding(Matching.FromSource("Microsoft.AspNetCore")) // Exclude logs from ASP.NET Core
+    .CreateLogger();
+
+builder.Logging.AddSerilog(); // Add Serilog as a log provider
+
+builder.Services.Configure<EncryptionSettings>(
+    builder.Configuration.GetSection("EncryptionSettings"));
+
 // Agregar AutoMapper
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 
-// Configuración de CORS y servicios adicionales (llama a las extensiones aquí)
-builder.Services.ConfigureCors();
+// CORS configuration and additional services (call extensions here)
+builder.Services.ConfigureCors(builder.Configuration);
 
-// Agregar servicios a la colección
-builder.Services.AddHttpClient<WeatherService>();  // Si aún no lo habías agregado
+builder.Services.AddDbContext<Context>(options =>
+    options.UseOracle(builder.Configuration.GetConnectionString("DbConnection")));
+
+// Force automatically generated paths (as with [controller]) to be lowercase
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
+// Adding services to the collection
+builder.Services.ConfigureServices(builder.Configuration);
+
 builder.Services.AddControllers();
 
-// Configuración de Swagger
+// Swagger configuration
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configurar la tubería de solicitudes HTTP
+// Configuring the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -34,7 +71,6 @@ using (var scope = app.Services.CreateScope())
     var loggerFactory = services.GetRequiredService<ILoggerFactory>();
     try
     {
-        // Puedes agregar cualquier lógica de inicialización aquí (por ejemplo, migraciones)
     }
     catch (Exception ex)
     {
@@ -43,8 +79,10 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Usar CORS y otros middlewares
-app.UseCors("CorsPolicy"); // Esto aplica la política CORS configurada
+var policyName = builder.Configuration.GetSection("CorsSettings:PolicyName").Get<string>();
+
+// Using CORS and other middleware
+app.UseCors(policyName);
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

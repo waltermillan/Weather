@@ -7,12 +7,11 @@ namespace Tests.UnitTests;
 public class WeatherServiceTests
 {
     [Fact]
-    public async void GetWeatherDataAsync_ShouldReturnValidData()
+    public async Task GetWeatherDataAsync_ShouldReturnValidData()
     {
         var mockHttpClient = new Mock<HttpClient>();
-        var weatherService = new WeatherService(mockHttpClient.Object);
+        var weatherService = new WeatherService(mockHttpClient.Object, null, null, null);
 
-        // Configura una respuesta simulada para la API
         var fakeWeatherData = new WeatherData
         {
             Location = "Malaga",
@@ -21,7 +20,7 @@ public class WeatherServiceTests
         };
 
         mockHttpClient.Setup(client => client.GetStringAsync(It.IsAny<string>()))
-                       .ReturnsAsync(fakeWeatherData.ToString()); // Devuelve el JSON simulado
+                       .ReturnsAsync(fakeWeatherData.ToString());
 
         var result = await weatherService.GetWeatherDataAsync("Malaga");
 

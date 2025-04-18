@@ -9,7 +9,7 @@ namespace Tests.Test
     public class WeatherControllerTests
     {
         [Fact]
-        public async void GetWeather_ShouldReturnWeatherData()
+        public async Task GetWeather_ShouldReturnWeatherData()
         {
             var mockService = new Mock<WeatherService>();
             mockService.Setup(service => service.GetWeatherDataAsync(It.IsAny<string>()))
@@ -26,7 +26,7 @@ namespace Tests.Test
                            Description = "Similar temperatures continuing with no rain expected."
                        });
 
-            var controller = new WeatherController(mockService.Object);
+            var controller = new WeathersController(mockService.Object);
 
             var result = await controller.GetWeather("Malaga");
 
