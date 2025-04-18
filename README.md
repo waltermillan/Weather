@@ -93,7 +93,7 @@ Ensure the following are installed on your system:
     ```
 
 2. Follow the video guides for full setup:
-    - [Initial Setup Guide]() *(insert link when available)*
+    - [1st Version Setup](https://youtu.be/wiVSGGAFbRE)
 
 3. Complete the remaining setup steps as described in the project documentation.
 
